@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/env
+/NLP_FinalProject/Lib/site-packages
+/NLP_FinalProject/Scripts
