@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<style>
+    .long-input {
+        width: 100%;
+    }
+
+    .btn-large {
+        border: none;
+        background: none;
+        padding: 0;
+    }
+
+        .btn-large img {
+            max-height: 100px;
+        }
+</style>
+
+<div class="jumbotron">
+    <h1>美食桌巾</h1>
+</div>
+
+<div class="container">
+    <form method="post" action="/">
+        <div class="form-group">
+            <label for="inputString">想來點?</label>
+            <input type="text" class="form-control long-input" id="inputString" name="input_string"
+                   value="{{ input_string or 'I have brown sugar, vanilla, flour, cilantro, garlic, but I don\'t want salt.' }}">
+        </div>
+        <button type="submit" class="btn btn-large">
+            <img src="{{ url_for('static', filename='content/美食桌巾.jpg') }}" alt="Submit">
+        </button>
+    </form>
+</div>
+
+{% if food or list1 or list2 %}
+<div class="row">
+    <!-- <div class="col-md-4">
+        <h3>{{ food }}</h3>
+        <ul>
+        </ul>
+    </div> -->
+    <div class="col-md-4">
+        <h3>要的食材</h3>
+        <ul>
+            {% for item in list1 %}
+            <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="col-md-4">
+        <h3>不要的食材</h3>
+        <ul>
+            {% for item in list2 %}
+            <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-md-12">
+        <div>{{ recipe|safe }}</div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
